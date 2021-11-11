@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>
+  {% if not form.instance.pk %}
+  New Poject
+  {% else %}
+  Update Project
+  {% endif %}
+</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="Save">
+
+  </form>
+
+
+{% endblock content %}

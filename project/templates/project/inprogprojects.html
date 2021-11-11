@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+
+</style>
+
+<h2>Current Projects in progress</h2>
+
+<div class="container">
+    <ol>
+      {% for project in projects %}
+        <h3>  {{project.name}}</h3>
+        <h5>  {{project.user}}</h5>
+          <ol>
+            {% for stage in project.stages.all %}
+              <h4>  {{stage.type}} </h4>
+              {{stage.target_completion}}
+              {{stage.info}}
+            {% endfor %}
+          </ol>
+      {% endfor %}
+    </ol>
+</div>
+
+{% endblock content %}

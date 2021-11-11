@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+
+</style>
+
+<h2>Current Projects in progress</h2>
+<a href="{% url 'project:project_create' %}">Add Project</a>
+<div class="container">
+    <ul>
+      {% for stage in object_list %}
+        <li><h3><a href="{% url 'project:project_detail' pk=stage.project.id %}">{{stage.project}}</a></h3>
+          <p>for <a href="{% url 'account:view' user_id=stage.project.user.id %}">{{stage.project.user}}</a> </p>
+          <ul>
+
+            <li><a href="#">{{stage.type}}</a> Due: {{stage.target_completion}}</li>
+            <li>Info: {{stage.info}}</li>
+          </ul>
+
+        </li>
+
+      {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

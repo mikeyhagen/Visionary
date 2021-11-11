@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+
+</style>
+
+
+
+<div class="container">
+
+  <h2>Project: {{project_details.name}}</h2>
+  <p>Belongs to: <a href="{% url 'account:view' user_id=project_details.user.id %}">{{project_details.user}}</a></p>
+  <p>Project start: {{project_details.date_created}}</p>
+  <p>Due: {{project_details.target_completion}}</p>
+  <p>Description: {{project_details.description}}</p>
+  <p>Stages:<a href="{% url 'project:stage_create' pk=project_details.id %}">Add Stage</a></p>
+  {% for stage in project_details.stages.all %}
+
+    <p>Stage: {{stage.type}} Due: {{stage.target_completion}}</p>
+    <p>{{stage.info}}</p>
+    <p>Updates:</p>
+    <p><a href="{% url 'project:stageupdate_create' pk=stage.id %}">Add update</a></p>
+
+    {% for stageupdate in stage.stageupdates.all %}
+    <p>  {{stageupdate.date_created}}: {{stageupdate.text}}</p>
+    {% endfor %}
+
+
+  {% endfor %}
+
+</div>
+
+{% endblock content %}

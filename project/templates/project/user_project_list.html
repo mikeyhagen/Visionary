@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+
+</style>
+
+<h2>my projects</h2>
+  {% for project in user_project_list %}
+    {{project.name}}
+
+  {% endfor %}
+
+{% endblock content %}
