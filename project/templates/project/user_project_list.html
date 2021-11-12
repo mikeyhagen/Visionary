@@ -7,9 +7,17 @@
 </style>
 
 <h2>my projects</h2>
-  {% for project in user_project_list %}
-    {{project.name}}
+  <ol>
 
-  {% endfor %}
 
+    {% for project in user_project_list %}
+
+
+      <a href="{% url 'project:project_detail' pk=project.id %}">
+
+        <h3>  {{project.name}} started: {{project.date_created}}</h3>
+        <h5> {{project.description}}</h5>
+      </a>
+    {% endfor %}
+  </ol>
 {% endblock content %}

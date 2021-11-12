@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+
+</style>
+
+<h1>Delete {{stage.type}}?</h1>
+<form class=""  method="post">
+  {% csrf_token %}
+  <input type="submit" class="btn btn-danger"  value="Delete">
+  <a href="{% url 'project:stage_update' pk=stage.id %} ">Cancel</a>
+</form>
+{% endblock content %}

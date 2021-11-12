@@ -15,7 +15,10 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" class="btn btn-primary" value="Save">
+    {% if form.instance.pk %}
+      <a href="{% url 'project:stageupdate_delete' pk=stageupdate.pk %}" class="btn btn-primary">Delete</a>
 
+    {% endif %}
   </form>
 
 

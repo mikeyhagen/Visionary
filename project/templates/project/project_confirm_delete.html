@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+
+</style>
+
+<h1>Delete {{project.name}}?</h1>
+<form class=""  method="post">
+  {% csrf_token %}
+  <input type="submit" class="btn btn-danger"  value="Delete">
+  <a href="{% url 'project:project_update' pk=project.id %} ">Cancel</a>
+</form>
+{% endblock content %}
